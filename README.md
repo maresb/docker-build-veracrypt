@@ -13,13 +13,13 @@ It's also recommended that you verify [your preferred checksum](#checksums).
 ## Links
 
 - GitHub: https://github.com/maresb/docker-build-veracrypt
-- Docker Hub: https://hub.docker.com/repository/docker/maresb/docker-build-s3fs
+- Docker Hub: https://hub.docker.com/repository/docker/maresb/docker-build-veracrypt
 - VeraCrypt GitHub: https://github.com/veracrypt/VeraCrypt
 - VeraCrypt official downloads: https://www.veracrypt.fr/en/Downloads.html
 
 ## Legal
 
-This Dockerfile is copyright Ben Mares.  (For details, see [LICENSE](LICENSE).)  It builds VeraCrypt from source code. I am not an author of VeraCrypt, nor am I affiliated with IDRIX or wxWidgets.
+This Dockerfile is copyright © 2020 Ben Mares.  (For details, see [LICENSE](LICENSE).)  It builds VeraCrypt from source code. I am in no way affiliated with VeraCrypt, IDRIX or wxWidgets.
 
 By using this Dockerfile, you agree to the terms of the following licenses.
 
@@ -34,7 +34,7 @@ Since there is no official VeraCrypt binary for Ubuntu 18.04, users must either 
 
 ## Motivation
 
-When it comes to encryption software, it's difficult to be too careful. (For example, I'd recommend reading about both Crypto AG and the suspicious end of TrueCrypt.)  Even for the official VeraCrypt downloads, there doesn't seem to be a good way to verify that those binaries actually correspond to the source code available on GitHub.  I find it more reassuring to compile from publicly available source code.  (Even if the source code is fine, that is no guarantee that the binary will be safe. For example, see "Reflections on Trusting Trust" by Ken Thompson.)
+When it comes to encryption software, it's difficult to be too careful. (For example, I'd recommend reading about both Crypto AG and the suspicious end of TrueCrypt.)  Even for the official VeraCrypt downloads, there doesn't seem to be a good way to verify that those binaries actually correspond to the source code available on GitHub.  I find it more reassuring to compile from publicly available source code.  (Even if the source code is fine, that is no guarantee that the compiled binary is safe; for example, see "Reflections on Trusting Trust" by Ken Thompson.)
 
 ## Challenge
 
@@ -71,7 +71,7 @@ docker image tag maresb/docker-build-veracrypt build-veracrypt
 docker rmi maresb/docker-build-veracrypt
 ```
 
-### 2. Copy the executable from the image via a temporary container.
+### 2. Copy the licenses and executables from the image via a temporary container.
 ```
 id=$(docker create build-veracrypt)
 docker cp $id:veracrypt .
@@ -81,7 +81,7 @@ docker cp $id:wxWindows_Library_License.txt .
 docker rm -v $id
 ```
 
-### 3. Clean up.
+### 3. Clean up (optional).
 
 ```
 docker rmi build-veracrypt
@@ -99,7 +99,7 @@ Otherwise, in the output of a partial build, look for a line with an arrow direc
 ```
  ---> df7f92f1a162
 ```
-Then you can look inside at the corresponding point with
+Then you can look inside the image at the corresponding point with
 ```
 docker run --rm -it df7f92f1a162 /bin/bash
 ```
@@ -113,7 +113,7 @@ Normal version:
 sudo apt-get install --no-install-recommends libfuse2 libgtk2.0-0 libsm6
 ```
 
-No GUI version:
+No-GUI version:
 ```
 sudo apt-get install --no-install-recommends libfuse2
 ```
