@@ -130,6 +130,7 @@ verify the checksums below.
 You can install VeraCrypt with
 
 ```
+sudo chmod a+x veracrypt
 sudo mv veracrypt /usr/bin/veracrypt
 ```
 
