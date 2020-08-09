@@ -1,12 +1,12 @@
 # docker-build-s3fs
 
-#### Reproducible VeraCrypt build for Ubuntu 18.04 with Docker
+#### Reproducible VeraCrypt build for Ubuntu 20.04 with Docker
 
 ## Downloads
 
 It's best to always check the [VeraCrypt official downloads](https://www.veracrypt.fr/en/Downloads.html) in case a more recent version has been released.
 
-### [Download the resulting binary and applicable licenses](builds/VeraCrypt_1.24-Update4) (rendered from [VeraCrypt_1.24-Update4](https://github.com/veracrypt/VeraCrypt/tree/VeraCrypt_1.24-Update4) release).
+### [Download the resulting binary and applicable licenses](builds/VeraCrypt_1.24-Update7) (rendered from [VeraCrypt_1.24-Update7](https://github.com/veracrypt/VeraCrypt/tree/VeraCrypt_1.24-Update7) release).
 
 It's also recommended that you verify [your preferred checksum](#checksums).
 
@@ -30,7 +30,7 @@ VeraCrypt uses the wxWidgets library, which is copyright © 1998-2011 Julian Sma
 
 ## Introduction
 
-Since there is no official VeraCrypt binary for Ubuntu 18.04, users must either find a binary which they trust, or compile from source.  Trust is a touchy subject when it comes to encryption software (see [Motivation](#motivation)). Compiling from source is time-consuming and disk-consuming.  But thanks to Docker, you can easily verify my build by reproducing it yourself.
+Since there is no official VeraCrypt binary for Ubuntu 20.04, users must either find a binary which they trust, or compile from source.  Trust is a touchy subject when it comes to encryption software (see [Motivation](#motivation)). Compiling from source is time-consuming and disk-consuming.  But thanks to Docker, you can easily verify my build by reproducing it yourself.
 
 ## Motivation
 
@@ -145,27 +145,27 @@ sudo wget -O /usr/share/pixmaps/veracrypt.xpm https://raw.githubusercontent.com/
 ### `veracrypt` size and checksum
 
     $ stat --printf="%s bytes\n" veracrypt
-    7627528 bytes
+    8046656 bytes
 
     $ md5sum veracrypt
-    97dedcb794032bbd37b3f1553511bba7  veracrypt
+    705c2c0cb9bc33e212c2a181eb91127f  veracrypt
 
     $ sha256sum veracrypt
-    fe58f41776b24b386694baa92e5ce1cfc8c53dd31e222a0aa714536ee4fb0e66  veracrypt
+    e762fddc32ca9575a53be39699f3825b8c490704acba650a9b687c841e708305  veracrypt
 
     $ b2sum veracrypt
-    a37129c1c5790159a5fff4766b2a674e8555fb13d2b42b33eb475233122f45c16b8824e5e8370bd75cfbc976e98c4bbd3e26bc5e7bac21eafadf5798ca4d1fae  veracrypt
+    b7ef803ee2c46a8ccbea96813a6e97b097aa7114c556b39c2c70f4e85e84786c5d8b9dbefaafc45a2e209f15d306e670ab1dc484c30b387f750a3a1e1d8ec2fd  veracrypt
 
 ### `veracrypt_nogui` size and checksum
 
     $ stat --printf="%s bytes\n" veracrypt_nogui
-    3104200 bytes
+    3228416 bytes
 
     $ md5sum veracrypt_nogui
-    c2e9a595f6d768acb0d1476cc7e41002  veracrypt_nogui
+    761981c7bb5c7c1b3d2faece7d01e50b  veracrypt_nogui
 
     $ sha256sum veracrypt_nogui
-    f303c1035c4d2f38af026d0bb4945bd61e94a4726151af5cdb260859940db230  veracrypt_nogui
+    4cbf6245ee8f362fa438fcf4d88f116ce3db01be9783c6988c3d5c7b934be65f  veracrypt_nogui
 
     $ b2sum veracrypt_nogui
-    d532f832964d46a883b26e0d7ad27c1bee56398b7435f0c3923de0901a0e12801b36c447a542e3d4782e87009d53e7c291b91d10d18c2ebab3bf023742433ef1  veracrypt_nogui
+    deb447b78fc859733ea5922f578d2b37617e850851c0eab9b8f7e5bcfebf974a9cb6b0d3cf887d9bcbefa1d9277bf129739763a74985b5b00c8aa6dd36c0f497  veracrypt_nogui

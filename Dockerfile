@@ -1,9 +1,12 @@
-FROM ubuntu:18.04 AS build
+FROM ubuntu:20.04 AS build
 
 LABEL maintainer="Ben Mares <services-docker-build-veracrypt@tensorial.com>" \
       name="docker-build-veracrypt" \
       url="https://github.com/maresb/docker-build-veracrypt" \
       vcs-url="https://github.com/maresb/docker-build-veracrypt"
+
+# Prevent prompt from install of tzdata
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install prerequisites
 RUN : \
@@ -24,8 +27,8 @@ USER builder
 WORKDIR /home/builder
 
 # wxWidgets release number and corresponding SHA1SUM
-ARG WXWIDGETS_VERSION=3.0.4
-ARG WXWIDGETS_SHA1SUM=246561a73ec5b9a5a7aaaaed46b64515dc9039ab
+ARG WXWIDGETS_VERSION=3.0.5
+ARG WXWIDGETS_SHA1SUM=30a2f96a5a9e0b84f630c6e8629d2fb8c6414199
 
 # Download, verify and extract wxWidgets release
 RUN : \
@@ -37,7 +40,7 @@ RUN : \
 ;
 
 # id of the Veracrypt commit to download
-ARG COMMIT_ID=VeraCrypt_1.24-Update4
+ARG COMMIT_ID=VeraCrypt_1.24-Update7
 RUN :  \
  && wget -O veracrypt.tgz https://github.com/veracrypt/VeraCrypt/tarball/$COMMIT_ID \
  && tar xzvf veracrypt.tgz \
@@ -46,9 +49,10 @@ RUN :  \
 ;
 
 # Optional: Compare GitHub download with PGP-signed source from www.veracrypt.fr.
-ARG VERACRYPT_SOURCE_URL=https://launchpad.net/veracrypt/trunk/1.24-update4/+download/VeraCrypt_1.24-Update4_Source.tar.bz2
+ARG VERACRYPT_SOURCE_URL=https://launchpad.net/veracrypt/trunk/1.24-update7/+download/VeraCrypt_1.24-Update7_Source.tar.bz2
 ARG VERACRYPT_FINGERPRINT=5069A233D55A0EEB174A5FC3821ACD02680D16DE
-ARG PGP_SERVER=pgpkeys.mit.edu
+ARG PGP_SERVER=hkps://keyserver.ubuntu.com
+
 RUN : \
  # Download PGP keys from keyserver
    && gpg --keyserver $PGP_SERVER --recv-keys $VERACRYPT_FINGERPRINT \
