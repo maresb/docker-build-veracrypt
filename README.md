@@ -1,5 +1,9 @@
 # docker-build-s3fs
 
+## This repository is obsolete
+
+There are now [official downloads](https://veracrypt.fr/en/Downloads.html) for recent versions of Ubuntu provided by VeraCrypt. Please use those instead!
+
 #### Reproducible VeraCrypt build for Ubuntu 20.04 with Docker
 
 ## Downloads
